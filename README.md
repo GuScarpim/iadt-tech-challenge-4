@@ -22,7 +22,7 @@ Solução de monitoramento multimodal (vídeo + áudio + texto) para identifica�
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # opcional: OPENAI_API_KEY / AWS_*
+cp .env.example .env   # depois preencha as chaves — ver GUIA_ENVS.md
 ```
 
 Opcional (mais pesado, alinhado às aulas):
@@ -81,6 +81,7 @@ python -m unittest tests.test_fusion_rules
 
 - Código: este repositório
 - Relatório: [`RELATORIO_TECNICO.md`](RELATORIO_TECNICO.md)
+- Visão geral (o que/por quê/de onde): [`EXPLICACAO_PROJETO.md`](EXPLICACAO_PROJETO.md)
 - Exemplos de saída: `outputs/examples/`
 - Métricas YOLO: `models/bleeding_metrics.json`
 - Vídeo YouTube/Vimeo: fora do escopo desta entrega
