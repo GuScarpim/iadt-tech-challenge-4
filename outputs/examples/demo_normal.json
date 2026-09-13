@@ -1,0 +1,56 @@
+{
+  "video": null,
+  "audio": null,
+  "text_input": "Consulta de rotina sem queixas. Paciente estável, humor preservado, acompanhamento pré-natal em dia.\n",
+  "fusion": {
+    "alert_level": "INFO",
+    "scores": {
+      "bleeding": 0.0,
+      "emotion_distress": 0.0,
+      "pose_closed": 0.0,
+      "audio_risk": 0.0,
+      "text_risk": 0.0,
+      "final": 0.0
+    },
+    "alerts": [],
+    "text_classification": {
+      "labels": {
+        "normal": 1.0
+      },
+      "top_label": "normal",
+      "text_risk_score": 0.0,
+      "hits": {}
+    },
+    "cloud_nlp": {
+      "engine": "local-fallback",
+      "sentiment": "NEUTRAL",
+      "sentiment_score": {
+        "Negative": 0.0,
+        "Neutral": 1.0,
+        "Positive": 0.0,
+        "Mixed": 0.0
+      },
+      "entities": [],
+      "key_phrases": [],
+      "local_classification": {
+        "labels": {
+          "normal": 1.0
+        },
+        "top_label": "normal",
+        "text_risk_score": 0.0,
+        "hits": {}
+      }
+    },
+    "report": {
+      "report": "# Relatório clínico multimodal — Saúde da Mulher\n\n**Nível de alerta:** INFO\n\n## Achados\n- Nenhum alerta crítico gerado.\n\n## Scores\n- Sangramento (YOLO): 0.0\n- Distresse emocional: 0.0\n- Postura fechada: 0.0\n- Risco áudio: 0.0\n- Risco texto: 0.0\n- Score final: 0.0\n\n## Transcrição (trecho)\nConsulta de rotina sem queixas. Paciente estável, humor preservado, acompanhamento pré-natal em dia.\n\n## Recomendação\nManter monitoramento de rotina.",
+      "engine": "local-template"
+    },
+    "fusion_weights": {
+      "bleeding": 0.35,
+      "emotion_distress": 0.2,
+      "pose_closed": 0.1,
+      "audio_risk": 0.25,
+      "text_risk": 0.1
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "video": {
+    "video_path": "data/samples/consulta_sem_sangramento.mp4",
+    "yolo": {
+      "modality": "video_yolo",
+      "model": "YOLOv8-bleeding",
+      "frames_processed": 45,
+      "frames_with_bleeding": 0,
+      "max_confidence": 0.0,
+      "bleeding_score": 0.0,
+      "events": [],
+      "output_video": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/fase4/iadt-tech-challenge-4/outputs/consulta_sem_sangramento_yolo_annotated.mp4"
+    },
+    "emotion": {
+      "modality": "video_emotion",
+      "model": "Haar+heuristic",
+      "frames_sampled": 3,
+      "mean_emotions": {
+        "neutral": 0.782,
+        "sad": 0.081,
+        "fear": 0.136,
+        "angry": 0.05,
+        "happy": 0.05,
+        "surprise": 0.05,
+        "disgust": 0.0
+      },
+      "distress_score": 0.268,
+      "dominant": "neutral",
+      "fps": 15.0
+    },
+    "pose": {
+      "modality": "video_pose",
+      "model": "OpenCV-motion-fallback",
+      "frames_sampled": 9,
+      "closed_frames": 3,
+      "pose_closed_score": 0.423,
+      "arm_movements": 0,
+      "physio_activity_score": 0.228,
+      "mean_motion": 0.0228
+    },
+    "scores": {
+      "bleeding": 0.0,
+      "emotion_distress": 0.268,
+      "pose_closed": 0.423
+    }
+  },
+  "audio": {
+    "modality": "audio",
+    "source": "data/samples/consulta_hesitante.wav",
+    "transcript": "Tenho medo dele e ele me bate, não posso falar",
+    "stt_engine": "override",
+    "prosody": {
+      "duration_sec": 3.0,
+      "rms": 0.3918,
+      "silence_ratio": 0.44,
+      "pause_score": 0.528,
+      "fatigue_score": 0.347
+    },
+    "labels": {
+      "violencia": 1.0,
+      "ansiedade": 0.37
+    },
+    "top_label": "violencia",
+    "audio_risk_score": 0.784,
+    "lexicon_keys": [
+      "depressao_pos_parto",
+      "ansiedade",
+      "violencia",
+      "fadiga"
+    ]
+  },
+  "text_input": "Paciente fala baixo e hesita. Relata que tem medo dele e que ele me bate. Diz que não posso falar abertamente e que sofre ameaça e controle.\n",
+  "fusion": {
+    "alert_level": "CRITICO",
+    "scores": {
+      "bleeding": 0.0,
+      "emotion_distress": 0.268,
+      "pose_closed": 0.423,
+      "audio_risk": 0.784,
+      "text_risk": 1.0,
+      "final": 0.392
+    },
+    "alerts": [
+      {
+        "type": "possivel_violencia_domestica",
+        "severity": "CRITICO",
+        "message": "Padrões multimodais compatíveis com risco de violência/abuso.",
+        "score": 1.0
+      },
+      {
+        "type": "ansiedade_gestacional",
+        "severity": "ATENCAO",
+        "message": "Sinais de ansiedade em consulta pré-natal/ginecológica.",
+        "score": 0.37
+      }
+    ],
+    "text_classification": {
+      "labels": {
+        "violencia": 1.0
+      },
+      "top_label": "violencia",
+      "text_risk_score": 1.0,
+      "hits": {
+        "violencia": [
+          "ele me bate",
+          "tenho medo dele",
+          "não posso falar",
+          "ameaça",
+          "controle"
+        ]
+      }
+    },
+    "cloud_nlp": {
+      "engine": "local-fallback",
+      "sentiment": "NEGATIVE",
+      "sentiment_score": {
+        "Negative": 1.0,
+        "Neutral": 0.0,
+        "Positive": 0.0,
+        "Mixed": 0.0
+      },
+      "entities": [],
+      "key_phrases": [
+        "ele me bate",
+        "tenho medo dele",
+        "não posso falar",
+        "controle",
+        "ameaça"
+      ],
+      "local_classification": {
+        "labels": {
+          "violencia": 1.0
+        },
+        "top_label": "violencia",
+        "text_risk_score": 1.0,
+        "hits": {
+          "violencia": [
+            "ele me bate",
+            "tenho medo dele",
+            "não posso falar",
+            "ameaça",
+            "controle"
+          ]
+        }
+      }
+    },
+    "report": {
+      "report": "# Relatório clínico multimodal — Saúde da Mulher\n\n**Nível de alerta:** CRITICO\n\n## Achados\n- [CRITICO] possivel_violencia_domestica: Padrões multimodais compatíveis com risco de violência/abuso.\n- [ATENCAO] ansiedade_gestacional: Sinais de ansiedade em consulta pré-natal/ginecológica.\n\n## Scores\n- Sangramento (YOLO): 0.0\n- Distresse emocional: 0.268\n- Postura fechada: 0.423\n- Risco áudio: 0.784\n- Risco texto: 1.0\n- Score final: 0.392\n\n## Transcrição (trecho)\nTenho medo dele e ele me bate, não posso falar Paciente fala baixo e hesita. Relata que tem medo dele e que ele me bate. Diz que não posso falar abertamente e que sofre ameaça e controle.\n\n## Recomendação\nEncaminhar para avaliação da equipe especializada conforme protocolo institucional.",
+      "engine": "local-template"
+    },
+    "fusion_weights": {
+      "bleeding": 0.35,
+      "emotion_distress": 0.2,
+      "pose_closed": 0.1,
+      "audio_risk": 0.25,
+      "text_risk": 0.1
+    }
+  }
+}

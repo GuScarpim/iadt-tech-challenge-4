@@ -1,0 +1,269 @@
+{
+  "video": {
+    "video_path": "data/samples/consulta_com_sangramento.mp4",
+    "yolo": {
+      "modality": "video_yolo",
+      "model": "YOLOv8-bleeding",
+      "frames_processed": 45,
+      "frames_with_bleeding": 5,
+      "max_confidence": 0.4062533974647522,
+      "bleeding_score": 0.696,
+      "events": [
+        {
+          "frame": 10,
+          "t_sec": 0.6666666666666666,
+          "detections": [
+            {
+              "label": "bleeding",
+              "confidence": 0.26841098070144653,
+              "bbox": [
+                340,
+                350,
+                407,
+                438
+              ]
+            },
+            {
+              "label": "bleeding",
+              "confidence": 0.1588510125875473,
+              "bbox": [
+                344,
+                429,
+                419,
+                489
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 20,
+          "t_sec": 1.3333333333333333,
+          "detections": [
+            {
+              "label": "bleeding",
+              "confidence": 0.2332969456911087,
+              "bbox": [
+                221,
+                419,
+                330,
+                479
+              ]
+            },
+            {
+              "label": "bleeding",
+              "confidence": 0.17132580280303955,
+              "bbox": [
+                336,
+                377,
+                380,
+                464
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 25,
+          "t_sec": 1.6666666666666667,
+          "detections": [
+            {
+              "label": "bleeding",
+              "confidence": 0.2034355103969574,
+              "bbox": [
+                288,
+                316,
+                388,
+                367
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 30,
+          "t_sec": 2.0,
+          "detections": [
+            {
+              "label": "bleeding",
+              "confidence": 0.34792017936706543,
+              "bbox": [
+                438,
+                355,
+                505,
+                425
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 35,
+          "t_sec": 2.3333333333333335,
+          "detections": [
+            {
+              "label": "bleeding",
+              "confidence": 0.4062533974647522,
+              "bbox": [
+                106,
+                132,
+                203,
+                207
+              ]
+            },
+            {
+              "label": "bleeding",
+              "confidence": 0.32408392429351807,
+              "bbox": [
+                203,
+                134,
+                281,
+                196
+              ]
+            }
+          ]
+        }
+      ],
+      "output_video": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/fase4/iadt-tech-challenge-4/outputs/consulta_com_sangramento_yolo_annotated.mp4"
+    },
+    "emotion": {
+      "modality": "video_emotion",
+      "model": "Haar+heuristic",
+      "frames_sampled": 3,
+      "mean_emotions": {
+        "neutral": 0.768,
+        "sad": 0.083,
+        "fear": 0.149,
+        "angry": 0.05,
+        "happy": 0.05,
+        "surprise": 0.05,
+        "disgust": 0.0
+      },
+      "distress_score": 0.282,
+      "dominant": "neutral",
+      "fps": 15.0
+    },
+    "pose": {
+      "modality": "video_pose",
+      "model": "OpenCV-motion-fallback",
+      "frames_sampled": 9,
+      "closed_frames": 3,
+      "pose_closed_score": 0.39,
+      "arm_movements": 1,
+      "physio_activity_score": 0.324,
+      "mean_motion": 0.0324
+    },
+    "scores": {
+      "bleeding": 0.696,
+      "emotion_distress": 0.282,
+      "pose_closed": 0.39
+    }
+  },
+  "audio": {
+    "modality": "audio",
+    "source": "data/samples/consulta_com_sangramento.mp4",
+    "transcript": "Estou triste e chorando, não consigo dormir, sem energia",
+    "stt_engine": "override",
+    "prosody": {
+      "duration_sec": 2.0,
+      "rms": 0.0,
+      "silence_ratio": 1.0,
+      "pause_score": 1.0,
+      "fatigue_score": 1.0
+    },
+    "labels": {
+      "depressao_pos_parto": 1.0
+    },
+    "top_label": "depressao_pos_parto",
+    "audio_risk_score": 1.0,
+    "lexicon_keys": [
+      "depressao_pos_parto",
+      "ansiedade",
+      "violencia",
+      "fadiga"
+    ]
+  },
+  "text_input": "Paciente relata que está muito triste e chorando todos os dias. Diz que não consegue dormir e se sente sem energia desde o nascimento do bebê. Menciona culpa e que não se sente mãe.\n",
+  "fusion": {
+    "alert_level": "CRITICO",
+    "scores": {
+      "bleeding": 0.696,
+      "emotion_distress": 0.282,
+      "pose_closed": 0.39,
+      "audio_risk": 1.0,
+      "text_risk": 1.0,
+      "final": 0.689
+    },
+    "alerts": [
+      {
+        "type": "complicacao_cirurgica_visual",
+        "severity": "CRITICO",
+        "message": "Possível sangramento anômalo detectado por YOLOv8/HSV.",
+        "score": 0.696
+      },
+      {
+        "type": "risco_depressao_pos_parto",
+        "severity": "ATENCAO",
+        "message": "Sinais linguísticos/vocais de depressão pós-parto.",
+        "score": 1.0
+      }
+    ],
+    "text_classification": {
+      "labels": {
+        "depressao_pos_parto": 1.0
+      },
+      "top_label": "depressao_pos_parto",
+      "text_risk_score": 1.0,
+      "hits": {
+        "depressao_pos_parto": [
+          "triste",
+          "chorando",
+          "não consigo dormir",
+          "sem energia",
+          "culpa"
+        ]
+      }
+    },
+    "cloud_nlp": {
+      "engine": "local-fallback",
+      "sentiment": "NEGATIVE",
+      "sentiment_score": {
+        "Negative": 1.0,
+        "Neutral": 0.0,
+        "Positive": 0.0,
+        "Mixed": 0.0
+      },
+      "entities": [],
+      "key_phrases": [
+        "triste",
+        "sem energia",
+        "culpa",
+        "não consigo dormir",
+        "chorando"
+      ],
+      "local_classification": {
+        "labels": {
+          "depressao_pos_parto": 1.0
+        },
+        "top_label": "depressao_pos_parto",
+        "text_risk_score": 1.0,
+        "hits": {
+          "depressao_pos_parto": [
+            "triste",
+            "chorando",
+            "não consigo dormir",
+            "sem energia",
+            "culpa"
+          ]
+        }
+      }
+    },
+    "report": {
+      "report": "# Relatório clínico multimodal — Saúde da Mulher\n\n**Nível de alerta:** CRITICO\n\n## Achados\n- [CRITICO] complicacao_cirurgica_visual: Possível sangramento anômalo detectado por YOLOv8/HSV.\n- [ATENCAO] risco_depressao_pos_parto: Sinais linguísticos/vocais de depressão pós-parto.\n\n## Scores\n- Sangramento (YOLO): 0.696\n- Distresse emocional: 0.282\n- Postura fechada: 0.39\n- Risco áudio: 1.0\n- Risco texto: 1.0\n- Score final: 0.689\n\n## Transcrição (trecho)\nEstou triste e chorando, não consigo dormir, sem energia Paciente relata que está muito triste e chorando todos os dias. Diz que não consegue dormir e se sente sem energia desde o nascimento do bebê. Menciona culpa e que não se sente mãe.\n\n## Recomendação\nEncaminhar para avaliação da equipe especializada conforme protocolo institucional.",
+      "engine": "local-template"
+    },
+    "fusion_weights": {
+      "bleeding": 0.35,
+      "emotion_distress": 0.2,
+      "pose_closed": 0.1,
+      "audio_risk": 0.25,
+      "text_risk": 0.1
+    }
+  }
+}

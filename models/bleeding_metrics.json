@@ -1,0 +1,13 @@
+{
+  "model": "YOLOv8n-bleeding",
+  "epochs": 15,
+  "dataset": "data/yolo_bleeding (synthetic)",
+  "metrics": {
+    "precision": 0.9636,
+    "recall": 0.9167,
+    "mAP50": 0.915,
+    "mAP50_95": 0.7933
+  },
+  "weights": "models/bleeding_yolov8n.pt",
+  "note": "Treinar com: python scripts/train_yolo.py"
+}
